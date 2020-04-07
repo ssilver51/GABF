@@ -12,7 +12,7 @@ def create_line_plot(x_vals, y_vals, x_label, y_label, title, filename):
 
     plt.savefig(f'images/{filename}')
     plt.close('all')
-    return
+    return fig
 
 if __name__ == "__main__":
     # Set plotting styles
@@ -43,7 +43,7 @@ if __name__ == "__main__":
     create_line_plot(df_year_counts_by_state['Year'], df_year_counts_by_state['State'], "Year", "# of States", "# of States Over Time", "count_states_over_time.png")
 
     # States that win the most
-    
+
     df_state_winners = df.copy()
     # Drop honorable mentions
     df_state_winners = df_state_winners[df_state_winners["Medal"] != "Honorable Mention"]

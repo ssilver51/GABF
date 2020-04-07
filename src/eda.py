@@ -3,6 +3,17 @@ import numpy as np
 import matplotlib.pyplot as plt
 from geocode_cities import geocode_cities
 
+def create_line_plot(x_vals, y_vals, x_label, y_label, title, filename):
+    fig, ax = plt.subplots(1, 1, figsize=(10, 6))
+    ax.plot(x_vals, y_vals)
+    ax.set_xlabel(x_label, fontsize=16)
+    ax.set_ylabel(y_label, fontsize=16)
+    ax.set_title(title, fontsize=18)
+
+    plt.savefig(f'images/{filename}')
+    plt.close('all')
+    return
+
 if __name__ == "__main__":
     # Set plotting styles
     plt.style.use("Solarize_Light2")
@@ -15,47 +26,24 @@ if __name__ == "__main__":
     df_year_counts['Count'] = ""
     df_year_counts = df_year_counts.groupby("Year").count()[['Count']].reset_index()
     
-    fig, ax = plt.subplots(1, 1, figsize=(10, 6))
-    ax.plot(df_year_counts['Year'], df_year_counts['Count'])
-    ax.set_xlabel("Year", fontsize=16)
-    ax.set_ylabel("# of Winners", fontsize=16)
-    ax.set_title("# of Winners Over Time", fontsize=18)
-
-    plt.savefig('images/count_winners_over_time.png')
-    plt.close('all')
-
+    create_line_plot(df_year_counts['Year'], df_year_counts['Count'], "Year", "# of Winners", "# of Winners Over Time", "count_winners_over_time.png")
 
     # Unique categories over time - Winners are directly related to categories
     df_year_counts_by_cat = df.copy()
     df_year_counts_by_cat = df_year_counts_by_cat[["Year", "Category"]]
     df_year_counts_by_cat = df_year_counts_by_cat.groupby('Year')['Category'].nunique().reset_index()
 
-    fig, ax = plt.subplots(1, 1, figsize=(10, 6))
-    ax.plot(df_year_counts_by_cat['Year'], df_year_counts_by_cat['Category'])
-    ax.set_xlabel("Year", fontsize=16)
-    ax.set_ylabel("# of Categories", fontsize=16)
-    ax.set_title("# of Categories Over Time", fontsize=18)
-
-    plt.savefig('images/count_cats_over_time.png')
-    plt.close('all')
-
+    create_line_plot(df_year_counts_by_cat['Year'], df_year_counts_by_cat['Category'], "Year", "# of Categories", "# of Categories Over Time", "count_cats_over_time.png")
 
     # Unique states over time
     df_year_counts_by_state = df.copy()
     df_year_counts_by_state = df_year_counts_by_state[["Year", "State"]]
     df_year_counts_by_state = df_year_counts_by_state.groupby('Year')['State'].nunique().reset_index()
 
-    fig, ax = plt.subplots(1, 1, figsize=(10, 6))
-    ax.plot(df_year_counts_by_state['Year'], df_year_counts_by_state['State'])
-    ax.set_xlabel("Year", fontsize=16)
-    ax.set_ylabel("# of States", fontsize=16)
-    ax.set_title("# of States Over Time", fontsize=18)
-
-    plt.savefig('images/count_states_over_time.png')
-    plt.close('all')
-
+    create_line_plot(df_year_counts_by_state['Year'], df_year_counts_by_state['State'], "Year", "# of States", "# of States Over Time", "count_states_over_time.png")
 
     # States that win the most
+    
     df_state_winners = df.copy()
     # Drop honorable mentions
     df_state_winners = df_state_winners[df_state_winners["Medal"] != "Honorable Mention"]

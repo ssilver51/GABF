@@ -1,6 +1,10 @@
 import pandas as pd
 import numpy as np
 
+def update_df(df, condition_col, condition_val, update_col, update_val):
+    df.loc[df[condition_col] == condition_val, update_col] = update_val
+    return df
+
 if __name__ == '__main__':
     df = pd.read_csv('data/gabf_winners.csv', index_col=0)
 
@@ -14,21 +18,21 @@ if __name__ == '__main__':
     df = df[df["Medal"] != "Small Brewpub and Small Brewpub Brewer of the Year"]
 
     # Some states were missing, but using the City and Brewery info, I was able to fill that in
-    df.loc[df['City'] == "Cincinnati", 'State'] = "OH"
-    df.loc[df['City'] == "Kennesaw", 'State'] = "GA"
+    df = update_df(df, "City", "Cincinnati", "State", "OH")
+    df = update_df(df, "City", "Kennesaw", "State", "GA")
 
     # Some states were using lower-case codes (ex. 'Ak' and 'wa' instead of 'AK' and 'WA')
     df['State'] = df['State'].str.upper()
     
     # Some cities are spelled wrong
-    df.loc[df['City'] == "Credted Butte", 'City'] = "Crested Butte"
-    df.loc[df['City'] == "Northamapton", 'City'] = "Northampton"
-    df.loc[df['City'] == "Jantzen Beach/Lloyd Center/Clear Lake", 'City'] = "Clear Lake"
-    df.loc[df['City'] == "Floosmoor", 'City'] = "Flossmoor"
-    df.loc[df['City'] == "College Park - Indianapolis", 'City'] = "Indianapolis"
+    df = update_df(df, "City", "Credted Butte", "City", "Crested Butte")
+    df = update_df(df, "City", "Northamapton", "City", "Northampton")
+    df = update_df(df, "City", "Jantzen Beach/Lloyd Center/Clear Lake", "City", "Clear Lake")
+    df = update_df(df, "City", "Floosmoor", "City", "Flossmoor")
+    df = update_df(df, "City", "College Park - Indianapolis", "City", "Indianapolis")
 
-    # Some one mis-typed city names
-    df.loc[df['City'] == "New Ulm", 'State'] = "MN"
+    # Some one mis-typed state name
+    df = update_df(df, "City", "New Ulm", "State", "MN")
 
 
     # Some states have location data alll grouped into the 'City' column

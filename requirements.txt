@@ -1,0 +1,8 @@
+pandas
+matplotlib
+selenium
+bs4
+numpy
+geopy
+basemap
+imageio

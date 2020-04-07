@@ -6,3 +6,5 @@ numpy
 geopy
 basemap
 imageio
+nltk
+wordcloud

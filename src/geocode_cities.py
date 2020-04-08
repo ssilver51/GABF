@@ -2,6 +2,8 @@ from geopy.geocoders import Bing
 from geopy.extra.rate_limiter import RateLimiter
 import pickle
 import pandas as pd
+import os
+
 
 def geocode_cities(list_of_locations, geolocator):
     coord_dict = {}
@@ -18,7 +20,7 @@ def geocode_cities(list_of_locations, geolocator):
     return coord_dict
 
 if __name__ == "__main__":
-    geolocator = Bing(api_key="AvQczkgSbjCaWMMqTFflaKe06M9Znv8l5v7cCmxTVH3KhHh7f8RAcwGRE1ZxYu9i", user_agent="GABF_analysis")
+    geolocator = Bing(api_key=os.getenv('BING_API_KEY'), user_agent="GABF_analysis")
     
     df = pd.read_csv('data/cleaned_gabf_winners.csv', index_col=0)
     df = df[["City", "State"]]

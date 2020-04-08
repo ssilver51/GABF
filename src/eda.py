@@ -44,8 +44,6 @@ def create_bar_chart_medals(df, groupby_col, n, cluster_medals=True, proportiona
     # Merge medal totals to one dataframe
     df_total_medals = df_total_medals.merge(df_golds, on=groupby_col).merge(df_silvers, on=groupby_col).merge(df_bronze, on=groupby_col)
     df_total_medals_top = df_total_medals.head(n)
-    
-
 
     if df_total_medals_top[groupby_col].str.len().max() >= 5:
         fig, ax = plt.subplots(1, 1, figsize=(12, 8))
@@ -66,7 +64,7 @@ def create_bar_chart_medals(df, groupby_col, n, cluster_medals=True, proportiona
 
     plt.xticks(rotation=x_label_rot, fontsize=x_label_font_size, ha=ha)
     ax.set_ylabel("# of Medals Won", fontsize=16)
-    ax.set_title(f"# of Medals by {groupby_col} (Top {n})", fontsize=18)
+    ax.set_title(f"Number of Medals by {groupby_col} (Top {n})", fontsize=18)
     ax.set_xlabel(groupby_col, fontsize=16)
     ax.set_xlabel(groupby_col, fontsize=16)
     
@@ -97,21 +95,21 @@ if __name__ == "__main__":
     df_year_counts['Count'] = ""
     df_year_counts = df_year_counts.groupby("Year").count()[['Count']].reset_index()
     
-    create_line_plot(df_year_counts['Year'], df_year_counts['Count'], "Year", "# of Winners", "# of Winners Over Time", "count_winners_over_time.png")
+    create_line_plot(df_year_counts['Year'], df_year_counts['Count'], "Year", "# of Winners", "Number of Winners Over Time", "count_winners_over_time.png")
 
     # Unique categories over time - Winners are directly related to categories
     df_year_counts_by_cat = df.copy()
     df_year_counts_by_cat = df_year_counts_by_cat[["Year", "Category"]]
     df_year_counts_by_cat = df_year_counts_by_cat.groupby('Year')['Category'].nunique().reset_index()
 
-    create_line_plot(df_year_counts_by_cat['Year'], df_year_counts_by_cat['Category'], "Year", "# of Categories", "# of Categories Over Time", "count_cats_over_time.png")
+    create_line_plot(df_year_counts_by_cat['Year'], df_year_counts_by_cat['Category'], "Year", "# of Categories", "Number of Categories Over Time", "count_cats_over_time.png")
 
     # Unique states over time
     df_year_counts_by_state = df.copy()
     df_year_counts_by_state = df_year_counts_by_state[["Year", "State"]]
     df_year_counts_by_state = df_year_counts_by_state.groupby('Year')['State'].nunique().reset_index()
 
-    create_line_plot(df_year_counts_by_state['Year'], df_year_counts_by_state['State'], "Year", "# of States", "# of States Over Time", "count_states_over_time.png")
+    create_line_plot(df_year_counts_by_state['Year'], df_year_counts_by_state['State'], "Year", "# of States", "Number of States Over Time", "count_states_over_time.png")
 
     # States that win the most
 

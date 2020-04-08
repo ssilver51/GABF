@@ -8,7 +8,7 @@ import os
 import imageio
 
 def create_mapping_frames(sorted_time_periods, latitutudes, longitudes, colors, labels, jitter=True):
-    plt.rcParams["figure.figsize"] = (14,6)
+    plt.rcParams["figure.figsize"] = (10,6)
     plt.rcParams.update({'font.size': 16})
 
     m = Basemap(projection = 'mill', llcrnrlat = 25, llcrnrlon = -130, urcrnrlat = 50, urcrnrlon = -60, resolution = 'l')
@@ -30,7 +30,13 @@ def create_mapping_frames(sorted_time_periods, latitutudes, longitudes, colors, 
             longitude += random.uniform(-0.5, 0.5)
         x, y = m(longitude, latitude)
 
-        m.plot(x, y, color=colors[i], marker="o", markersize=3.5, label=labels[i] if filenumber == 1 else "_nolegend_")
+        # If first year, create legend
+        if filenumber == 1:
+            label = labels[i] 
+        else:
+            label = "_nolegend_"
+
+        m.plot(x, y, color=colors[i], alpha=0.5, marker="o", markersize=3, label=label)
         
         try:
             if cur_time_period == sorted_time_periods[i+1]:
@@ -44,8 +50,8 @@ def create_mapping_frames(sorted_time_periods, latitutudes, longitudes, colors, 
         except IndexError:
             plt.title(f"Total GABF Medal Wins (as of {cur_time_period})")
             plt.legend(loc="lower right")
-            # Create 5 copies of last frame
-            for i in range(5):
+            # Create 7 copies of last frame
+            for i in range(7):
                 plt.savefig(f"images/map_frames/{filenumber:03d}.png")
                 filenumber += 1
     return

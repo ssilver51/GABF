@@ -2,6 +2,7 @@
 data/beer_reviews.csv
 data/reviews_gabf.csv
 data/reviews_non_gabf.csv
+**/.DS_Store
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

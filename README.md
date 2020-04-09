@@ -13,7 +13,7 @@ The competition chooses winners by awarding bronze, silver, and gold medals for 
 My goal is to answer two questions:
 
 1. Are there any features of Great American Beer Festival entries that reliably result in winning more medals?
-1. Are GABF-medal-medals beers prefered to non-medal-winners?
+1. Are GABF-medal-winning beers prefered to non-medal-winners?
 
 # Data
 GABF has published all of their award winners on [their website](https://www.greatamericanbeerfestival.com/the-competition/winners/). Although this data is formatted in an HTML table, I was not able to find a direct download. To begin exploring this data, I scraped the linked website using a combination of Selenium (to interact with JavaScript elements) and BeautifulSoup (to parse the HTML).

@@ -1,3 +1,6 @@
+<img src="images/gabf.jpeg">
+*Photo by Dave Jensen*
+
 # Background
 The Great American Beer Festival (shortened to GABF) is an annual beer festival/competition held in Denver, Colorado. The event was founded in 1982 in Boulder, CO and has grown to become the largest ticketed beer competition in the United States. In recent years the event has been held in the Colorado Convention Center, with as many as <strong>800</strong> participating breweries and <strong> 62,000</strong> attendees (2018).
 <br><br>
@@ -252,3 +255,4 @@ Since this calculated p-value is less than our chosen α of 0.1, <strong>we choo
 * https://www.brewersassociation.org/statistics-and-data/state-craft-beer-stats/
 * https://www.kaggle.com/rdoume/beerreviews
 * https://www.beeradvocate.com/
+* https://beer47.com/3-ways-to-avoid-long-lines-at-gabf-3b3c22231a2a

@@ -20,10 +20,10 @@ def create_mapping_frames(sorted_time_periods, latitutudes, longitudes, colors, 
     jitter -- if True, add a bit of jitter to the map
     """
     # set figure params
-    plt.rcParams["figure.figsize"] = (10,6)
     plt.rcParams.update({'font.size': 16})
 
     # load/configure USA map
+    plt.figure(figsize=(12,6))
     m = Basemap(projection = 'mill', llcrnrlat = 25, llcrnrlon = -130, urcrnrlat = 50, urcrnrlon = -60, resolution = 'l')
     m.drawcoastlines()
     m.drawstates(color="grey")
@@ -60,7 +60,7 @@ def create_mapping_frames(sorted_time_periods, latitutudes, longitudes, colors, 
             else:
                 plt.title(f"Total GABF Medal Wins (as of {cur_time_period})")
                 plt.legend(loc="lower right")
-                plt.savefig(f"images/map_frames/{filenumber:03d}.png")
+                plt.savefig(f"images/map_frames/{filenumber:03d}.png", bbox_inches='tight')
                 filenumber += 1
         
         # Handle last frame
@@ -70,7 +70,7 @@ def create_mapping_frames(sorted_time_periods, latitutudes, longitudes, colors, 
             
             # Create 7 copies of last frame
             for i in range(7):
-                plt.savefig(f"images/map_frames/{filenumber:03d}.png")
+                plt.savefig(f"images/map_frames/{filenumber:03d}.png", bbox_inches='tight')
                 filenumber += 1
     return
 

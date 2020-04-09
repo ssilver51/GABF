@@ -28,12 +28,12 @@ def create_word_cloud(pd_series, title):
     create a word cloud from a pandas series of text with a given plot title
     """
     text = " ".join(name for name in pd_series)
-    wordcloud = WordCloud().generate(text)
+    wordcloud = WordCloud(mode="RGBA", background_color=None).generate(text)
     plt.figure(figsize=(10, 6))
     plt.imshow(wordcloud, interpolation='bilinear')
     plt.axis("off")
     plt.title(title)
-
+    plt.tight_layout()
     filename = title.lower().replace(" ", "_")
     plt.savefig(f"images/word_cloud_{filename}.png")
     return

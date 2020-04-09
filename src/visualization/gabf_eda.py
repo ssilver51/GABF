@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from geocode_cities import geocode_cities
+from src.utilities.geocode_cities import geocode_cities
 
 def create_line_plot(x_vals, y_vals, x_label, y_label, title, filename):
     fig, ax = plt.subplots(1, 1, figsize=(10, 6))

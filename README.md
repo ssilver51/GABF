@@ -1,5 +1,5 @@
 # Background
-The Great American Beer Festival (shortened to GABF) is an annual beer festival/competition held in Denver, Colorado. The event was founded in 1982 in Boulder, CO and has grown to become the largest ticketed beer competition in the United States. In recent years the event has been held in the Colorado Convention Center, with as many as **800** participating breweries and **62,000** attendees (2018).
+The Great American Beer Festival (shortened to GABF) is an annual beer festival/competition held in Denver, Colorado. The event was founded in 1982 in Boulder, CO and has grown to become the largest ticketed beer competition in the United States. In recent years the event has been held in the Colorado Convention Center, with as many as <strong>800</strong> participating breweries and <strong> 62,000</strong> attendees (2018).
 <br><br>
 The competition chooses winners by awarding bronze, silver, and gold medals for each beer category. GABF defines the criteria for these medals as:
 | Award  	| Description                                                                                                                                                         	|
@@ -8,21 +8,33 @@ The competition chooses winners by awarding bronze, silver, and gold medals for 
 | Silver 	| An excellent beer that may vary slightly from style parameters while maintaining close adherence to the style and displaying excellent taste, aroma and appearance. 	|
 | Bronze 	| A fine example of the style that may vary slightly from style parameters and/or have minor deviations in taste, aroma or appearance.                                	|
 
+<br>
+<br>
+My goal is to answer two questions:
+
+1. Are there any features of Great American Beer Festival entries that reliably result in winning more medals?
+1. Are GABF-medal-medals beers prefered to non-medal-winners?
+
 # Data
 GABF has published all of their award winners on [their website](https://www.greatamericanbeerfestival.com/the-competition/winners/). Although this data is formatted in an HTML table, I was not able to find a direct download. To begin exploring this data, I scraped the linked website using a combination of Selenium (to interact with JavaScript elements) and BeautifulSoup (to parse the HTML).
 <br>
-
-The dataset contained 6047 award winners, spanning the years of 1983-2019.
 <br>
+The dataset contains 6047 award winners, spanning the years of 1983-2019.
+<br>
+<br>
+<center>
+
 | Field     	| Description                                                  	|
 |-----------	|--------------------------------------------------------------	|
 | Medal     	| The award received (Gold, Silver, Bronze, Honorable Mention) 	|
-| Beer Name 	| Name of the award-winning beer                               	|
-| Brewery   	| Name of the award-winning brewery                            	|
-| City      	| City of the brewery                                          	|
+| Beer Name 	| Name of the beer                               	|
+| Brewery   	| Name of the brewery                            	|
+| City      	| City in which the brewery operates                                          	|
 | State     	| State in which the brewery operates                          	|
-| Category  	| Beer category the award was given                            	|
+| Category  	| Beer category for which the award was given                            	|
 | Year      	| Year the award was won                                       	|
+
+</center>
 
 # Exploratory Data Analysis
 ## Growth of the Competition
@@ -57,7 +69,7 @@ Which breweries have the most medals on their wall?
 <p align="center"><img src="images/brewery_medals.png" width=800></p>
 <br>
 <br>
-We see some **very** familiar names on this list. The top three: Pabst, Anheuser Busch, and Miller are some of the largest and oldest brewing companies in the country. Although they hardly meet the definition of "craft" breweries, it makes sense they'd be so well represented simply due to their age.
+We see some <strong>very</strong> familiar names on this list. The top three: Pabst, Anheuser Busch, and Miller are some of the largest and oldest brewing companies in the country. Although they hardly meet the definition of "craft" breweries, it makes sense they'd be so well represented simply due to their age.
 <br>
 <br>
 That is all fine and well, but let's look a bit more granular. Let's take a look at the medal-breakdown for these same breweries.
@@ -108,19 +120,20 @@ Again, let's break it down by medal:
 <p align="center"><img src="images/city_medals_clustered.png" width=800></p>
 <br>
 <br>
-Whoa! There are a lot more discrepancies between medals than when we looked state-wide. Although Denver seems to win similar number of gold, silver, and bronze medals; cities like Boston, MA (thanks Boston Beer Co. for ~80% of those gold medals); Austin, TX; and Fort Collins, CO have won *many* more gold medals than silver or bronze. When they win, they seem to win big!
+Whoa! There are a lot more discrepancies between medals than when we looked state-wide. Although Denver seems to win similar number of gold, silver, and bronze medals; cities like Boston, MA (thanks Boston Beer Co. for ~80% of those gold medals); Austin, TX; and Fort Collins, CO have won <em>many</em> more gold medals than silver or bronze. When they win, they seem to win big!
 <br>
 <br>
-Looking at total medals, Denver is winning by a pretty solid margin, but if we just look at **gold** medals, we have a pretty close race! Portland, OR is only 9 gold medals behind us (compared to nearly 50 total medals). We can also see that Seattle, WA is actually 3rd in gold medal wins (compared to 4th in total medal wins); with Milwaukee, WI falling back nearly four places.
+Looking at total medals, Denver is winning by a pretty solid margin, but if we just look at <strong>gold</strong> medals, we have a pretty close race! Portland, OR is only 9 gold medals behind us (compared to nearly 50 total medals). We can also see that Seattle, WA is actually 3rd in gold medal wins (compared to 4th in total medal wins); with Milwaukee, WI falling back nearly four places.
 <br>
 <br>
+
 ### Map Over Time
 What does this data look like over time?
 <br>
 <p align="center"><img src="images/map_animation.gif" width=800></p>
 <br>
 <br>
-We see some familiar hotspots! Big concentration of wins in Denver, but also other cities in CO; such as Boulder, Fort Collins, and Golden seem to make our state look like quite the beer hub! California also seems to have quite the representation, with nearly half the state covered in points by 2019.
+We see some familiar hotspots! Big concentration of medals in Denver, but also other cities in CO; such as Boulder, Fort Collins, and Golden seem to make our state look like quite the beer hub! California also seems to have quite the representation, with nearly half the state covered in points by 2019.
 <br>
 <br>
 We can also recognize some of our other breakout cities on this chart; such as Portland, Seattle, Austin, and Chicago.
@@ -135,7 +148,7 @@ Let's take a look at the names of these award-winning beers and see if we notice
 <p align="center"><img src="images/word_cloud_beer_names.png" width=800></p>
 <br>
 <br>
-Well, this isn't all that interesting. We see "Ale", "Pale Ale", "Stout", "Lager" are some of the biggest words on this word cloud. This is not that surprising, as those are all very popular *categories* for the competition. 
+Well, this isn't all that interesting. We see "Ale", "Pale Ale", "Stout", "Lager" are some of the biggest items on this word cloud. This is not that surprising, as those are all very popular <em>categories</em> for the competition. 
 <br>
 <br>
 If we had to take something away from this chart, it is to include the style of your beer in its name!
@@ -147,7 +160,7 @@ Let's take a crack at removing some of these category keywords from our word clo
 <p align="center"><img src="images/word_cloud_beer_names_without_brewery_or_category_keywords.png" width=800></p>
 <br>
 <br>
-That is a bit better. We got rid of the official category names from our word cloud, but we still have a few stragglers like "IPA", "Pils", and "Barleywine". After some investigation, I found that although these are commonly known beer styles, they are not the **official** names used in GABF categories (for example, GABF uses the full name "India Pale Ale" rather than "IPA").
+That is a bit better. We got rid of the official category names from our word cloud, but we still have a few stragglers like "IPA", "Pils", and "Barleywine". After some investigation, I found that although these are commonly known beer styles, they are not the <strong>official</strong> names used in GABF categories (for example, GABF uses the full name "India Pale Ale" rather than "IPA").
 <br>
 <br>
 Even so, we can take a few inferences from this word cloud. We see a few descriptive words that appear quite frequently, such as "Cherry", "Milk", "Bourbon", "Gold", and "Apricot". It appears adjectives such as these have a positive impact on how well a beer is received. 
@@ -159,22 +172,21 @@ Perhaps these adjectives have a positive impact because it allows one to get som
 For example, if you plan on premiering your new apricot-infused gold lager at the Great American Beer Festival, it appears the best name for it should contain the keywords "Apricot", "Gold", and "Lager".
 
 # Analysis
-After exhaustive exploration of all this data, it seems reasonable to ask: **Are GABF-medal-awarded beers any better than other beers?**
+After exhaustive exploration of all this data, it seems reasonable to ask: <strong>Are GABF-medal-awarded beers any better than other beers?</strong>
 <br>
 <br>
-To answer this, I pulled in a dataset from [Kaggle](https://www.kaggle.com/rdoume/beerreviews) containing **1,672,016** beer reviews pulled from a review website called [BeerAdvocate](https://www.beeradvocate.com/). We assume each of these reviews is independent and identically distributed.
+To answer this, I pulled in a dataset from [Kaggle](https://www.kaggle.com/rdoume/beerreviews) containing <strong>1,672,016</strong> beer reviews pulled from a review website called [BeerAdvocate](https://www.beeradvocate.com/). We assume each of these reviews is independent and identically distributed.
 <br>
 <br>
-This dataset contained beer names, brewery names, and a few review scores rated 1-5. Let's explore one score in particular, the **overall score**.
+This dataset contains beer names, brewery names, and review scores rated 1-5. Let's explore one score in particular, the <strong>overall score</strong>. This score is intended to encapsulate the reviewer's overall preference of the beer (not necessarily an average of other provided scores).
 <br>
 <br>
-After some cleaning and fuzzy matching, I was able to split this dataset into two samples; one sample contained 171,529 reviews, all specific to beers that have received a GABF medal, and the other sample contained 1,500,487 reviews, all specific to beers that have NOT won a medal at the Great American Beer Festival.
+After some cleaning and fuzzy matching, I was able to split this dataset into two samples: one sample contained 171,529 reviews, all specific to beers that have received a GABF medal; and the other sample contained 1,500,487 reviews, all specific to beers that have NOT won a medal at the Great American Beer Festival.
 <br>
 <br>
-To test whether or not GABF winners score higher than their counterparts, we consider the following hypothesis test:
+To test whether or not GABF winners score higher reviews than their counterparts, we consider the following hypothesis test:
 <br>
 <br>
-
 <p align="center">
     <img src="images/markdown/hyp_test.png" width=200>
     <br>
@@ -217,13 +229,13 @@ Sample 2 (reviews of GABF medal winners) had the following statistics:
 </center>
 <br>
 <br>
-The difference in our means is ~0.13, with the sample size of Sample 2 sitting at about 1/10 of Sample 1. Let's plot the distributions.
+The difference in our mean review scores is ~0.13, with the sample size of Sample 2 sitting at about 1/10 of Sample 1. Let's plot the distributions.
 <br>
 <br>
 <p align="center"><img src="images/overall_reviews_dists.png" width=800 align=center></p>
 <br>
 <br>
-We notice our distributions hardly overlap at all! If we use these distributions to calculate a z-score and p-value, we see that our Sample 2 mean is nearly 22 standard deviations away from our Sample 1 mean, equating to a p-value of **< .00001**.
+We notice our distributions hardly overlap at all! If we use these distributions to calculate a z-score and p-value, we see that our Sample 2 mean is nearly 22 standard deviations away from our Sample 1 mean, equating to a p-value of <strong>< .00001</strong>.
 <br>
 <br>
 <p align="center"><img src="images/overall_review_p_val.png" width=800 align=center></p>
@@ -235,14 +247,9 @@ Since this calculated p-value is less than our chosen α of 0.1, we choose to re
 
 # Sources
 
-https://www.greatamericanbeerfestival.com/the-competition/about-the-beer-competition/
-<br>
-https://www.greatamericanbeerfestival.com/info/faq/
-<br>
-http://www.nbcnews.com/id/44430953
-<br>
-https://www.brewersassociation.org/statistics-and-data/state-craft-beer-stats/
-<br>
-https://www.kaggle.com/rdoume/beerreviews
-<br>
-https://www.beeradvocate.com/
+* https://www.greatamericanbeerfestival.com/the-competition/about-the-beer-competition/
+* https://www.greatamericanbeerfestival.com/info/faq/
+* http://www.nbcnews.com/id/44430953
+* https://www.brewersassociation.org/statistics-and-data/state-craft-beer-stats/
+* https://www.kaggle.com/rdoume/beerreviews
+* https://www.beeradvocate.com/

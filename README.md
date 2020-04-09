@@ -1,8 +1,10 @@
+# Great American Beer Festival Winners
+
 <img src="images/markdown/gabf.jpeg">
 <em>Photo by Dave Jensen</em>
 
 # Background
-The Great American Beer Festival (shortened to GABF) is an annual beer festival/competition held in Denver, Colorado. The event was founded in 1982 in Boulder, CO and has grown to become the largest ticketed beer competition in the United States. In recent years the event has been held in the Colorado Convention Center, with as many as <strong>800</strong> participating breweries and <strong> 62,000</strong> attendees (2018).
+The Great American Beer Festival (shortened to GABF) is an annual beer festival/competition held in Denver, Colorado. The event was founded in 1982 in Boulder, CO and has grown to become the largest ticketed beer competition in the United States. In recent years the event has been held in the Colorado Convention Center, with as many as <strong>800</strong> participating breweries and <strong>62,000</strong> attendees (2018).
 <br><br>
 The competition chooses winners by awarding bronze, silver, and gold medals for each beer category. GABF defines the criteria for these medals as:
 | Award  	| Description                                                                                                                                                         	|

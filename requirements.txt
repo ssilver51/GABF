@@ -8,3 +8,6 @@ basemap
 imageio
 nltk
 wordcloud
+kaggle
+python-Levenshtein
+fuzzywuzzy

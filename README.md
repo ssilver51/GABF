@@ -1,7 +1,7 @@
 # Background
 The Great American Beer Festival (shortened to GABF) is an annual beer festival/competition held in Denver, Colorado. The event was founded in 1982 in Boulder, CO and has grown to become the largest ticketed beer competition in the United States. In recent years the event has been held in the Colorado Convention Center, with as many as **800** participating breweries and **62,000** attendees (2018).
 <br><br>
-The competition chooses winners by awarding bronze, silver, and gold medals for each beer category. GABF defines the critera for these medals as:
+The competition chooses winners by awarding bronze, silver, and gold medals for each beer category. GABF defines the criteria for these medals as:
 | Award  	| Description                                                                                                                                                         	|
 |--------	|---------------------------------------------------------------------------------------------------------------------------------------------------------------------	|
 | Gold   	| A world-class beer that accurately exemplifies the specified style, displaying the proper balance of taste, aroma and appearance.                                   	|
@@ -93,7 +93,7 @@ Which cities are best represented?
 <p align="center"><img src="images/city_medals.png" width=800></p>
 <br>
 <br>
-First thing I notice is that California doesn't have nearly the same represention when we break down winners by city. Why would this be the case? Perhaps because California's population is spread out over a larger area, they have fewer cities with high concentrations of winners. Even still, I'd expect to see more than one city in CA on this list!
+First thing I notice is that California doesn't have nearly the same representation when we break down winners by city. Why would this be the case? Perhaps because California's population is spread out over a larger area, they have fewer cities with high concentrations of winners. Even still, I'd expect to see more than one city in CA on this list!
 <br>
 <br>
 A second interesting fact about this data, four out of the top fifteen winning cities are in Colorado! That is surprising, as I'd certainly expect cities like Golden to be less represented than a huge city like Boston. Perhaps this is simply due to the fact that the competition is held in CO, so CO breweries are more likely to enter. Even though GABF is the largest beer festival/competition in the country, it makes sense that tiny breweries in the state of MA are less likely to enter than similarly-sized breweries in the home-state of the competition.
@@ -108,7 +108,7 @@ Again, let's break it down by medal:
 <p align="center"><img src="images/city_medals_clustered.png" width=800></p>
 <br>
 <br>
-Whoa! There are a lot more discrepencies between medals than when we looked state-wide. Although Denver seems to win similar number of gold, silver, and bronze medals; cities like Boston, MA (thanks Boston Beer Co. for ~80% of those gold medals); Austin, TX; and Fort Collins, CO have won *many* more gold medals than silver or bronze. When they win, they seem to win big!
+Whoa! There are a lot more discrepancies between medals than when we looked state-wide. Although Denver seems to win similar number of gold, silver, and bronze medals; cities like Boston, MA (thanks Boston Beer Co. for ~80% of those gold medals); Austin, TX; and Fort Collins, CO have won *many* more gold medals than silver or bronze. When they win, they seem to win big!
 <br>
 <br>
 Looking at total medals, Denver is winning by a pretty solid margin, but if we just look at **gold** medals, we have a pretty close race! Portland, OR is only 9 gold medals behind us (compared to nearly 50 total medals). We can also see that Seattle, WA is actually 3rd in gold medal wins (compared to 4th in total medal wins); with Milwaukee, WI falling back nearly four places.
@@ -120,13 +120,13 @@ What does this data look like over time?
 <p align="center"><img src="images/map_animation.gif" width=800></p>
 <br>
 <br>
-We see some familiar hotspots! Big concentration of wins in Denver, but also other cities in CO such such as Boulder, Fort Collins, and Golden seem to make our state look like quite the beer hub! California also seems to have quite the representation, with nearly half the state covered in points by 2019.
+We see some familiar hotspots! Big concentration of wins in Denver, but also other cities in CO; such as Boulder, Fort Collins, and Golden seem to make our state look like quite the beer hub! California also seems to have quite the representation, with nearly half the state covered in points by 2019.
 <br>
 <br>
 We can also recognize some of our other breakout cities on this chart; such as Portland, Seattle, Austin, and Chicago.
 <br>
 <br>
-One surprise brought to light by this chart is the all of the wins along the east coast. Although you wouldn't have guessed by looking at our Top 15 bar charts, the entire east coast turns into a slurry of dots by 2019, making it nearly impossible to even discern the states! Compared to middle America, the east coast has a serious concentration of good beer!
+One surprise brought to light by this chart is all of the wins along the east coast. Although you wouldn't have guessed by looking at our Top 15 bar charts, the entire east coast turns into a slurry of dots by 2019, making it nearly impossible to even discern the states! Compared to middle America, the east coast has a serious concentration of good beer!
 
 ## Beer Names
 Let's take a look at the names of these award-winning beers and see if we notice any trends.
@@ -138,7 +138,7 @@ Let's take a look at the names of these award-winning beers and see if we notice
 Well, this isn't all that interesting. We see "Ale", "Pale Ale", "Stout", "Lager" are some of the biggest words on this word cloud. This is not that surprising, as those are all very popular *categories* for the competition. 
 <br>
 <br>
-If we had to take something away from this chart, it is to include the style of your beer in it's name!
+If we had to take something away from this chart, it is to include the style of your beer in its name!
 <br>
 <br>
 Let's take a crack at removing some of these category keywords from our word cloud. While we are at it, let's remove some of the brewery names as well.
@@ -150,10 +150,10 @@ Let's take a crack at removing some of these category keywords from our word clo
 That is a bit better. We got rid of the official category names from our word cloud, but we still have a few stragglers like "IPA", "Pils", and "Barleywine". After some investigation, I found that although these are commonly known beer styles, they are not the **official** names used in GABF categories (for example, GABF uses the full name "India Pale Ale" rather than "IPA").
 <br>
 <br>
-Even so, we can take a few inferences from this word cloud. We see a few descriptive words that appear quite frequently, such as "Cherry", "Milk", "Bourbon", "Gold", and "Apricot". It appears adjectives such as these have a positive impact on how well a beer is recieved. 
+Even so, we can take a few inferences from this word cloud. We see a few descriptive words that appear quite frequently, such as "Cherry", "Milk", "Bourbon", "Gold", and "Apricot". It appears adjectives such as these have a positive impact on how well a beer is received. 
 <br>
 <br>
-Perhaps these adjectives have a positive impact because it allows one to get some insight to what they are about to drink, rather than be surprised by an nondescript name.
+Perhaps these adjectives have a positive impact because it allows one to get some insight to what they are about to drink, rather than be surprised by a nondescript name.
 <br>
 <br>
 For example, if you plan on premiering your new apricot-infused gold lager at the Great American Beer Festival, it appears the best name for it should contain the keywords "Apricot", "Gold", and "Lager".
@@ -168,7 +168,7 @@ To answer this, I pulled in a dataset from [Kaggle](https://www.kaggle.com/rdoum
 This dataset contained beer names, brewery names, and a few review scores rated 1-5. Let's explore one score in particular, the **overall score**.
 <br>
 <br>
-After some cleaning and fuzzy matching, I was able to split this dataset into two samples; one sample contained 171,529 reviews, all specific to beers that have recieved a GABF medal, and the other sample contained 1,500,487 reviews, all specific to beers that have NOT won a medal at the Great American Beer Festival.
+After some cleaning and fuzzy matching, I was able to split this dataset into two samples; one sample contained 171,529 reviews, all specific to beers that have received a GABF medal, and the other sample contained 1,500,487 reviews, all specific to beers that have NOT won a medal at the Great American Beer Festival.
 <br>
 <br>
 To test whether or not GABF winners score higher than their counterparts, we consider the following hypothesis test:

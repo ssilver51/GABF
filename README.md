@@ -21,6 +21,7 @@ My goal is to answer two questions:
 1. Are GABF-medal-winning beers prefered to non-medal-winners?
 
 # Data
+## GABF
 GABF has published all of their award winners on [their website](https://www.greatamericanbeerfestival.com/the-competition/winners/). Although this data is formatted in an HTML table, I was not able to find a direct download. To begin exploring this data, I scraped the linked website using a combination of Selenium (to interact with JavaScript elements) and BeautifulSoup (to parse the HTML).
 <br>
 <br>
@@ -40,6 +41,23 @@ The dataset contains 6047 award winners, spanning the years of 1983-2019.
 | Year      	| Year the award was won                                       	|
 
 </center>
+
+## Beer Reviews
+Kaggle user `rdoume` posted a dataset containing nearly 1.6 million beer reviews posted on a review website called [BeerAdvocate](https://www.beeradvocate.com/). We can use this data to answer our second question and see if GABF winners score higher than other beers. The data has quite a few fields, but for the purpose of this analysis, we will look at the following:
+
+<center>
+
+| Field     	| Description                                                  	|
+|-----------	|--------------------------------------------------------------	|
+| beer_name     	| Name of the beer 	|
+| brewery_name   	| Name of the brewery                            	|
+| review_overall   	| Overall rating of the beer on a scale from 1-5                          	|
+
+</center>
+
+### Data Sources
+* https://www.greatamericanbeerfestival.com/the-competition/winners/
+* https://www.kaggle.com/rdoume/beerreviews
 
 # Exploratory Data Analysis
 ## Growth of the Competition
@@ -152,7 +170,6 @@ Let's take a look at the names of these award-winning beers and see if we notice
 <br>
 <p align="center"><img src="images/word_cloud_beer_names.png" width=800></p>
 <br>
-
 Well, this isn't all that interesting. We see "Ale", "Pale Ale", "Stout", "Lager" are some of the biggest items on this word cloud. This is not that surprising, as those are all very popular <em>categories</em> for the competition. 
 <br>
 <br>
@@ -164,7 +181,6 @@ Let's take a crack at removing some of these category keywords from our word clo
 <br>
 <p align="center"><img src="images/word_cloud_beer_names_without_brewery_or_category_keywords.png" width=800></p>
 <br>
-
 That is a bit better. We got rid of the official category names from our word cloud, but we still have a few stragglers like "IPA", "Pils", and "Barleywine". After some investigation, I found that although these are commonly known beer styles, they are not the <strong>official</strong> names used in GABF categories (for example, GABF uses the full name "India Pale Ale" rather than "IPA").
 <br>
 <br>
@@ -212,7 +228,7 @@ Sample 1 (reviews of non-GABF medal winners) had the following statistics:
 
 | Statistic          	| Value     	|
 |--------------------	|-----------	|
-| Mean Review        	| 3.812268  	|
+| Mean Review Score (from 1-5)         	| 3.812268  	|
 | Sample Size        	| 1,500,487 	|
 | Standard Deviation 	| 0.720175  	|
 | Standard Error     	| 0.000588  	|
@@ -225,7 +241,7 @@ Sample 2 (reviews of GABF medal winners) had the following statistics:
 
 | Statistic          	| Value    	|
 |--------------------	|----------	|
-| Mean Review        	| 3.825187 	|
+| Mean Review Score (from 1-5)        	| 3.825187 	|
 | Sample Size        	| 171,529  	|
 | Standard Deviation 	| 0.777281 	|
 | Standard Error     	| 0.001876 	|

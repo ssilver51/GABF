@@ -6,9 +6,15 @@ import numpy as np
 
 
 def std_err(sample):
+    """
+    calculate standard error from a sample
+    """
     return (sample.std())/(np.sqrt(len(sample)))
 
 def sample_statistics(sample):
+    """
+    calculate sample statistics
+    """
     stats = {
         "mean": sample.mean(),
         "sample size": len(sample),
@@ -18,6 +24,19 @@ def sample_statistics(sample):
     return stats
 
 def plot_norm_distributions(sample1, sample2, color1, color2, title, x_label, filepath, standard_deviations=4):
+    """
+    Plot two distributions on the same plot
+
+    Keyword arguments:
+    sample1 -- list or series of data
+    sample2 -- list or series of data
+    color1 -- color of distribution line for sample1
+    color2 -- color of distribution line for sample2
+    title -- plot title
+    x_label -- x axis label
+    filepath -- output image path
+    standard_deviations -- number of standard deviations from the mean to plot (default: 4)
+    """
     fig, ax = plt.subplots(1, 1, figsize=(10, 6))
 
     dist1 = stats.norm(loc=sample1.mean(), scale=std_err(sample1))
@@ -39,6 +58,18 @@ def plot_norm_distributions(sample1, sample2, color1, color2, title, x_label, fi
     return fig
 
 def plot_p_value(sample1, sample2, color, title, x_label, filepath):
+    """
+    Plot a distribution with sample mean, display p-value and z-score
+    note: sample1.mean() < sample2.mean()
+
+    Keyword arguments:
+    sample1 -- list or series of data
+    sample2 -- list or series of data
+    color -- color of distribution line
+    title -- chart title
+    x_label -- x axis label
+    filepath -- output image file path
+    """
     fig, ax = plt.subplots(1, 1, figsize=(10, 6))
 
     sample2_mean = sample2.mean()
@@ -47,7 +78,6 @@ def plot_p_value(sample1, sample2, color, title, x_label, filepath):
 
     z_score = (sample2_mean - sample1.mean())/std_err(sample1)
     p_value = 1 - dist1.cdf(sample2_mean)
-
 
     x_vals = np.linspace(sample1.mean() - 4 * std_err(sample1), sample2_mean + 4 * std_err(sample1), 1000)
     y_vals = dist1.pdf(x_vals)

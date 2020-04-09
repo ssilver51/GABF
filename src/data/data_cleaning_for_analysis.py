@@ -3,7 +3,6 @@ import re
 from fuzzywuzzy import fuzz
 import pickle
 import os
-import kaggle
 
 def clean_text(text):
     # text = re.sub(r"\s+", "_", text.strip()).lower()
@@ -35,11 +34,6 @@ def save_fuzzy_match_dict(lst1, lst2, thresh, pickle_file_path, overwrite=False)
     return
 
 if __name__ == '__main__':
-
-    # You will need a kaggle API token, see kaggle-api documentation https://github.com/Kaggle/kaggle-api#api-credentials
-    if not os.path.exists('data/beer_reviews.csv'):
-        kaggle.api.authenticate()
-        kaggle.api.dataset_download_files('rdoume/beerreviews', path='data', unzip=True)
 
     df_reviews = pd.read_csv('data/beer_reviews.csv')
     df_reviews = df_reviews.dropna(subset=['beer_name', 'brewery_name'])

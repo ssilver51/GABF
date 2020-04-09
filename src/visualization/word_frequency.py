@@ -7,10 +7,16 @@ from string import punctuation
 import re
 
 def remove_words(text, word_list):
+    """
+    remove words found in word_list from text
+    """
     text_lst = text.split(" ")
     return " ".join([v.strip() for v in text_lst if v.lower().strip() not in set(word_list)])
 
 def create_word_list(text_list, stopwords):
+    """
+    create wordlist from a list/series of text (excluding stopwords)
+    """
     clean_words = []
     for text in text_list:
         clean_text = remove_words(text, stopwords)
@@ -18,6 +24,9 @@ def create_word_list(text_list, stopwords):
     return clean_words
 
 def create_word_cloud(pd_series, title):
+    """
+    create a word cloud from a pandas series of text with a given plot title
+    """
     text = " ".join(name for name in pd_series)
     wordcloud = WordCloud().generate(text)
     plt.figure(figsize=(10, 6))
@@ -30,21 +39,29 @@ def create_word_cloud(pd_series, title):
     return
 
 if __name__ == '__main__':
+    # Download stopwords
     nltk.download('stopwords')
+
+    # beer has lots of stop words
     stop_words = set(stopwords.words('english') + stopwords.words('german') + stopwords.words('french'))
 
-    df = pd.read_csv('data/cleaned_gabf_winners.csv')
-    df['Clean Beer Name'] = df['Beer Name'].apply(remove_words, args=(stop_words,))
+    df_winners = pd.read_csv('data/cleaned_gabf_winners.csv')
+    
+    # Remove stop words
+    df_winners['Clean Beer Name'] = df_winners['Beer Name'].apply(remove_words, args=(stop_words,))
 
-    create_word_cloud(df['Clean Beer Name'], "Beer Names")
+    create_word_cloud(df_winners['Clean Beer Name'], "Beer Names")
 
-    categories = df['Category'].unique()
+    # Remove category keywords
+    categories = df_winners['Category'].unique()
     clean_category_word_list = create_word_list(categories, stop_words)
 
-    df['Clean Beer Name Without Categories'] = df['Clean Beer Name'].apply(remove_words, args=(clean_category_word_list,))
+    df_winners['Clean Beer Name Without Categories'] = df_winners['Clean Beer Name'].apply(remove_words, args=(clean_category_word_list,))
 
-    brewery_names = df['Brewery'].unique()
+    # Remove brewery keywords
+    brewery_names = df_winners['Brewery'].unique()
     clean_brewery_word_list = create_word_list(brewery_names, stop_words)
 
-    df['Clean Beer Name Without Categories and Breweries'] = df['Clean Beer Name Without Categories'].apply(remove_words, args=(clean_brewery_word_list,))
-    create_word_cloud(df['Clean Beer Name Without Categories and Breweries'], "Beer Names without Brewery or Category Keywords")
+    # Oof, long column names
+    df_winners['Clean Beer Name Without Categories and Breweries'] = df_winners['Clean Beer Name Without Categories'].apply(remove_words, args=(clean_brewery_word_list,))
+    create_word_cloud(df_winners['Clean Beer Name Without Categories and Breweries'], "Beer Names without Brewery or Category Keywords")

@@ -4,6 +4,17 @@ import matplotlib.pyplot as plt
 from src.utilities.geocode_cities import geocode_cities
 
 def create_line_plot(x_vals, y_vals, x_label, y_label, title, filename):
+    """
+    Create a line chart
+
+    Keyword arguments:
+    x_vals -- x coordinates to plot
+    y_vals -- y coordinates to plot
+    x_label -- x axis label
+    y_label -- y axis label
+    title -- plot title
+    filename -- output filename
+    """
     fig, ax = plt.subplots(1, 1, figsize=(10, 6))
     ax.plot(x_vals, y_vals)
     ax.set_xlabel(x_label, fontsize=16)
@@ -13,12 +24,22 @@ def create_line_plot(x_vals, y_vals, x_label, y_label, title, filename):
     plt.close('all')
     return fig
 
-def create_bar_chart_medals(df, groupby_col, n, cluster_medals=True, proportional=False):
+def create_bar_chart_medals(df, groupby_col, n, cluster_medals=True):
+    """
+    Create a bar chart from GABF medal wins
+
+    Keyword arguments:
+    df -- dataframe containing GABF data
+    groupby_col -- column to group data by (ex. if plotting medals per state, groupby_col="State")
+    n -- number of bars to plot
+    cluster_medals -- if True, bar chart will be clustered into gold, silver, and bronze medals. If false, total medals will be plotted
+    """
     df_state_winners = df.copy()
+
     # Drop honorable mentions
     df_state_winners = df_state_winners[df_state_winners["Medal"] != "Honorable Mention"]
 
-    # Coallate totals of all medals
+    # Coallate totals of all medals into separate dataframes
     df_total_medals = df_state_winners.groupby(groupby_col).count().reset_index()[[groupby_col, "Medal"]]
     df_total_medals = df_total_medals.sort_values(by=['Medal'], ascending=False)
     df_total_medals = df_total_medals.rename(columns={"Medal": "total_medals"})
@@ -42,6 +63,7 @@ def create_bar_chart_medals(df, groupby_col, n, cluster_medals=True, proportiona
     df_total_medals = df_total_medals.merge(df_golds, on=groupby_col).merge(df_silvers, on=groupby_col).merge(df_bronze, on=groupby_col)
     df_total_medals_top = df_total_medals.head(n)
 
+    # change chart parameters based on length of labels
     if df_total_medals_top[groupby_col].str.len().max() >= 5:
         fig, ax = plt.subplots(1, 1, figsize=(12, 8))
         x_label_rot = 30
@@ -90,38 +112,35 @@ if __name__ == "__main__":
     
     df = pd.read_csv('data/cleaned_gabf_winners.csv', index_col=0)
 
-    # Winners over time
+    # Plot winners over time
     df_year_counts = df.copy()
     df_year_counts['Count'] = ""
     df_year_counts = df_year_counts.groupby("Year").count()[['Count']].reset_index()
     
     create_line_plot(df_year_counts['Year'], df_year_counts['Count'], "Year", "# of Winners", "Number of Winners Over Time", "count_winners_over_time.png")
 
-    # Unique categories over time - Winners are directly related to categories
+    # Plot unique categories over time - Winners are directly related to categories
     df_year_counts_by_cat = df.copy()
     df_year_counts_by_cat = df_year_counts_by_cat[["Year", "Category"]]
     df_year_counts_by_cat = df_year_counts_by_cat.groupby('Year')['Category'].nunique().reset_index()
 
     create_line_plot(df_year_counts_by_cat['Year'], df_year_counts_by_cat['Category'], "Year", "# of Categories", "Number of Categories Over Time", "count_cats_over_time.png")
 
-    # Unique states over time
+    # Plot unique states over time
     df_year_counts_by_state = df.copy()
     df_year_counts_by_state = df_year_counts_by_state[["Year", "State"]]
     df_year_counts_by_state = df_year_counts_by_state.groupby('Year')['State'].nunique().reset_index()
 
     create_line_plot(df_year_counts_by_state['Year'], df_year_counts_by_state['State'], "Year", "# of States", "Number of States Over Time", "count_states_over_time.png")
 
-    # States that win the most
-
-    # TODO
-    # Add top breweries
+    # Plot states that win the most
     create_bar_chart_medals(df, "State", n=15, cluster_medals=False)
     create_bar_chart_medals(df, "State", n=15, cluster_medals=True)
     
-
     create_bar_chart_medals(df, "Brewery", n=15, cluster_medals=False)
     create_bar_chart_medals(df, "Brewery", n=15, cluster_medals=True)
 
+    # Plot cities that win the most
     df['City'] = df['City'] + ", " + df['State']
     create_bar_chart_medals(df, "City", n=15, cluster_medals=False)
     create_bar_chart_medals(df, "City", n=15, cluster_medals=True)

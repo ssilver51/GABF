@@ -9,16 +9,21 @@ if __name__ == "__main__":
     driver = webdriver.Chrome()
     driver.get('https://www.greatamericanbeerfestival.com/the-competition/winners/')
 
+    # let the page load
     time.sleep(3)
 
+    # click drop down
     year_drop_down = driver.find_element_by_xpath('//li[@id="year"]/a/span')
     year_drop_down.click()
 
+    # let the page load
     time.sleep(3)
 
+    # select "All Years" from dropdown
     all_years = driver.find_element_by_xpath("//li[@data-year='0']")
     all_years.click()
 
+    # let the page load
     time.sleep(3)
 
     # pull page source code
@@ -29,6 +34,7 @@ if __name__ == "__main__":
     # parse with BeautifulSoup
     soup = BeautifulSoup(page_html, 'html.parser')
 
+    # Create CSV from html
     header_elms = soup.find("thead").find("tr").find_all("th") 
     headers = [header.text for header in header_elms] 
 

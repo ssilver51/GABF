@@ -240,7 +240,7 @@ We notice our distributions hardly overlap at all! If we use these distributions
 <p align="center"><img src="images/overall_review_p_val.png" width=800 align=center></p>
 <br>
 
-Since this calculated p-value is less than our chosen α of 0.1, we choose to reject the null in favor of the alternative hypothesis, concluding beers that win medals at the Great American Beer Festival get better reviews than beers that did not.
+Since this calculated p-value is less than our chosen α of 0.1, <strong>we choose to reject the null in favor of the alternative hypothesis</strong>, concluding that beers that have won medals at the Great American Beer Festival get better reviews than beers that did not.
 <br>
 <br>
 

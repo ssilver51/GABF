@@ -8,7 +8,7 @@ def update_df(df, condition_col, condition_val, update_col, update_val):
 if __name__ == '__main__':
     df_winners = pd.read_csv('data/gabf_winners.csv', index_col=0)
 
-    # They made the switch from 'First Place', 'Second Place', and 'Third Place' to 'Gold', 'Silver', and 'Bronze'
+    # They made the switch from 'First Place', 'Second Place', and 'Third Place' to 'Gold', 'Silver', and 'Bronze'; convert
     df_winners["Medal"] = df_winners["Medal"].replace("First Place", "Gold")
     df_winners["Medal"] = df_winners["Medal"].replace("Second Place", "Silver")
     df_winners["Medal"] = df_winners["Medal"].replace("Third Place", "Bronze")

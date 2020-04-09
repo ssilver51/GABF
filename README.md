@@ -1,4 +1,4 @@
-<img src="images/gabf.jpeg">
+<img src="images/markdown/gabf.jpeg">
 <em>Photo by Dave Jensen</em>
 
 # Background

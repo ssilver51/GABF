@@ -171,8 +171,22 @@ This dataset contained beer names, brewery names, and a few review scores rated 
 After some cleaning and fuzzy matching, I was able to split this dataset into two samples; one sample contained 171,529 reviews, all specific to beers that have recieved a GABF medal, and the other sample contained 1,500,487 reviews, all specific to beers that have NOT won a medal at the Great American Beer Festival.
 <br>
 <br>
+To test whether or not GABF winners score higher than their counterparts, we consider the following hypothesis test:
+<br>
+<br>
+<img src="images/markdown/hyp_test.png" width=200 align=center>
+<br>
+<br>
+Where:
+<br>
+<br>
+<img src="images/markdown/mean1.png" width=200 align=center>
+<br>
+<br>
 
-$\cos$
+<img src="images/markdown/mean2.png" width=200 align=center>
+<br>
+<br>
 
 # Sources
 

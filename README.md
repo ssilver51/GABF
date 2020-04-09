@@ -127,6 +127,53 @@ We can also recognize some of our other breakout cities on this chart; such as P
 <br>
 <br>
 One surprise brought to light by this chart is the all of the wins along the east coast. Although you wouldn't have guessed by looking at our Top 15 bar charts, the entire east coast turns into a slurry of dots by 2019, making it nearly impossible to even discern the states! Compared to middle America, the east coast has a serious concentration of good beer!
+
+## Beer Names
+Let's take a look at the names of these award-winning beers and see if we notice any trends.
+<br>
+<br>
+<img src="images/word_cloud_beer_names.png" width=800 align=center>
+<br>
+<br>
+Well, this isn't all that interesting. We see "Ale", "Pale Ale", "Stout", "Lager" are some of the biggest words on this word cloud. This is not that surprising, as those are all very popular *categories* for the competition. 
+<br>
+<br>
+If we had to take something away from this chart, it is to include the style of your beer in it's name!
+<br>
+<br>
+Let's take a crack at removing some of these category keywords from our word cloud. While we are at it, let's remove some of the brewery names as well.
+<br>
+<br>
+<img src="images/word_cloud_beer_names_without_brewery_or_category_keywords.png" width=800 align=center>
+<br>
+<br>
+That is a bit better. We got rid of the official category names from our word cloud, but we still have a few stragglers like "IPA", "Pils", and "Barleywine". After some investigation, I found that although these are commonly known beer styles, they are not the **official** names used in GABF categories (for example, GABF uses the full name "India Pale Ale" rather than "IPA").
+<br>
+<br>
+Even so, we can take a few inferences from this word cloud. We see a few descriptive words that appear quite frequently, such as "Cherry", "Milk", "Bourbon", "Gold", and "Apricot". It appears adjectives such as these have a positive impact on how well a beer is recieved. 
+<br>
+<br>
+Perhaps these adjectives have a positive impact because it allows one to get some insight to what they are about to drink, rather than be surprised by an nondescript name.
+<br>
+<br>
+For example, if you plan on premiering your new apricot-infused gold lager at the Great American Beer Festival, it appears the best name for it should contain the keywords "Apricot", "Gold", and "Lager".
+
+# Analysis
+After exhaustive exploration of all this data, it seems reasonable to ask: **Are GABF-medal-awarded beers any better than other beers?**
+<br>
+<br>
+To answer this, I pulled in a dataset from [Kaggle](https://www.kaggle.com/rdoume/beerreviews) containing **1,672,016** beer reviews pulled from a review website called [BeerAdvocate](https://www.beeradvocate.com/).
+<br>
+<br>
+This dataset contained beer names, brewery names, and a few review scores rated 1-5. Let's explore one score in particular, the **overall score**.
+<br>
+<br>
+After some cleaning and fuzzy matching, I was able to split this dataset into two samples; one sample contained 171,529 reviews, all specific to beers that have recieved a GABF medal, and the other sample contained 1,500,487 reviews, all specific to beers that have NOT won a medal at the Great American Beer Festival.
+<br>
+<br>
+
+$\cos$
+
 # Sources
 
 https://www.greatamericanbeerfestival.com/the-competition/about-the-beer-competition/
@@ -136,3 +183,7 @@ https://www.greatamericanbeerfestival.com/info/faq/
 http://www.nbcnews.com/id/44430953
 <br>
 https://www.brewersassociation.org/statistics-and-data/state-craft-beer-stats/
+<br>
+https://www.kaggle.com/rdoume/beerreviews
+<br>
+https://www.beeradvocate.com/

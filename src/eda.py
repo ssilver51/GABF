@@ -4,9 +4,6 @@ import matplotlib.pyplot as plt
 from geocode_cities import geocode_cities
 
 def create_line_plot(x_vals, y_vals, x_label, y_label, title, filename):
-    # Set plotting styles
-    plt.style.use("Solarize_Light2")
-    plt.rcParams.update({'font.size': 16})
     fig, ax = plt.subplots(1, 1, figsize=(10, 6))
     ax.plot(x_vals, y_vals)
     ax.set_xlabel(x_label, fontsize=16)
@@ -87,7 +84,10 @@ def create_bar_chart_medals(df, groupby_col, n, cluster_medals=True, proportiona
     return fig
 
 if __name__ == "__main__":
-
+    # Set plotting styles
+    plt.style.use("Solarize_Light2")
+    plt.rcParams.update({'font.size': 16})
+    
     df = pd.read_csv('data/cleaned_gabf_winners.csv', index_col=0)
 
     # Winners over time

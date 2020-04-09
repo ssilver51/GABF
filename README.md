@@ -1,12 +1,27 @@
 # Great American Beer Festival Winners
+## Table of Contents
+1. [Background](#background)
+1. [Data](#data)
+    - [GABF](##gabf)
+    - [Beer Reviews](##beer-reviews)
+1. [Exploratory Data Analysis](#exploratory-data-analysis)
+    - [Growth of the Competition](##growth-of-the-competition)
+    - [Who Wins the Most?](##who-wins-the-most?)
+        * [Breweries](###breweries)
+        * [States](###states)
+        * [Cities](###cities)
+        * [Map Over Time](###map-over-time)
+    - [Beer Names](##beer-names)
+1. [Hypothesis Test](#hypothesis-test)
+1. [Sources](#sources)
 
 <img src="images/markdown/gabf.jpeg">
 <em>Photo by Dave Jensen</em>
 
 # Background
-The Great American Beer Festival (shortened to GABF) is an annual beer festival/competition held in Denver, Colorado. The event was founded in 1982 in Boulder, CO and has grown to become the largest ticketed beer competition in the United States. In recent years the event has been held in the Colorado Convention Center, with as many as <strong>800</strong> participating breweries and <strong>62,000</strong> attendees (2018).
+The Great American Beer Festival (shortened to GABF) is an annual beer festival/competition held in Denver, Colorado. The event was founded in 1982 in Boulder, CO and has grown to become the largest ticketed beer competition in the United States. In recent years, the event has been held in the Colorado Convention Center, with as many as <strong>800</strong> participating breweries and <strong>62,000</strong> attendees (2018).
 <br><br>
-The competition chooses winners by awarding bronze, silver, and gold medals for each beer category. GABF defines the criteria for these medals as:
+The competition chooses winners by awarding gold, silver, and bronze medals for each beer category. GABF defines the criteria for these medals as:
 | Award  	| Description                                                                                                                                                         	|
 |--------	|---------------------------------------------------------------------------------------------------------------------------------------------------------------------	|
 | Gold   	| A world-class beer that accurately exemplifies the specified style, displaying the proper balance of taste, aroma and appearance.                                   	|
@@ -55,7 +70,7 @@ Kaggle user `rdoume` posted a dataset containing nearly 1.6 million beer reviews
 
 </center>
 
-### Data Sources
+## Data Sources
 * https://www.greatamericanbeerfestival.com/the-competition/winners/
 * https://www.kaggle.com/rdoume/beerreviews
 
@@ -192,7 +207,7 @@ Perhaps these adjectives have a positive impact because it allows one to get som
 <br>
 For example, if you plan on premiering your new apricot-infused gold lager at the Great American Beer Festival, it appears the best name for it should contain the keywords "Apricot", "Gold", and "Lager".
 
-# Analysis
+# Hypothesis Test
 After exhaustive exploration of all this data, it seems reasonable to ask: <strong>Are GABF-medal-awarded beers any better than other beers?</strong>
 <br>
 <br>

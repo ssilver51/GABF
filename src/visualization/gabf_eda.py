@@ -1,7 +1,6 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from src.utilities.geocode_cities import geocode_cities
 
 def create_line_plot(x_vals, y_vals, x_label, y_label, title, filename):
     """
@@ -69,11 +68,10 @@ def create_bar_chart_medals(df, groupby_col, n, cluster_medals=True):
         x_label_rot = 30
         ha = 'right'
         plt.tight_layout(pad=3)
+        x_label_font_size = 12
         if df_total_medals_top[groupby_col].str.len().max() >= 20:
-            x_label_font_size = 10
             fig.subplots_adjust(bottom=.25)
         else:
-            x_label_font_size = 12
             fig.subplots_adjust(bottom=.2)
     else:
         fig, ax = plt.subplots(1, 1, figsize=(12, 6))

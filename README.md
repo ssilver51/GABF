@@ -58,7 +58,7 @@ The dataset contains 6047 award winners, spanning the years of 1983-2019.
 </center>
 
 ## Beer Reviews
-Kaggle user `rdoume` posted a dataset containing nearly 1.6 million beer reviews posted on a review website called [BeerAdvocate](https://www.beeradvocate.com/). We can use this data to answer our second question and see if GABF winners score higher than other beers. The data has quite a few fields, but for the purpose of this analysis, we will look at the following:
+Kaggle user `rdoume` posted a dataset of beer reviews posted on a review website called [BeerAdvocate](https://www.beeradvocate.com/). We can use this data to answer our second question and see if GABF winners score higher than other beers. The data has quite a few fields, but for the purpose of this analysis, we will look at the following:
 
 <center>
 
@@ -69,6 +69,8 @@ Kaggle user `rdoume` posted a dataset containing nearly 1.6 million beer reviews
 | review_overall   	| Overall rating of the beer on a scale from 1-5                          	|
 
 </center>
+
+This dataset contains nearly 1.6 million reviews. To assist in matching beer names and breweries accross the two datasets, I utilized `python-Levenshtein` to fuzzy-match.
 
 ## Data Sources
 * https://www.greatamericanbeerfestival.com/the-competition/winners/
